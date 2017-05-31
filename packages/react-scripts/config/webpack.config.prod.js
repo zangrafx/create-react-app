@@ -189,7 +189,15 @@ module.exports = {
         // @remove-on-eject-begin
         options: {
           babelrc: false,
-          presets: [require.resolve('babel-preset-react-app')],
+          presets: [
+            require.resolve('babel-preset-react-app'),
+            // this might be needed if babel-preset-react-app is missing new features we use
+            // require.resolve('babel-preset-stage-2')
+          ],
+          plugins: [
+            // this enables decorators
+            require.resolve('babel-plugin-transform-decorators-legacy'),
+          ],
         },
         // @remove-on-eject-end
       },
