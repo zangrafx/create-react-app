@@ -68,10 +68,10 @@ module.exports = function(proxy, allowedHost) {
     hot: true,
     // It is important to tell WebpackDevServer to use the same "root" path
     // as we specified in the config. In development, we always serve from /.
-    publicPath: config.output.publicPath,
+    publicPath: 'http://localhost:3000/',
     // WebpackDevServer is noisy by default so we emit custom message instead
     // by listening to the compiler events with `compiler.plugin` calls above.
-    quiet: true,
+    quiet: false,
     // Reportedly, this avoids CPU overload on some systems.
     // https://github.com/facebookincubator/create-react-app/issues/293
     watchOptions: {
@@ -85,6 +85,9 @@ module.exports = function(proxy, allowedHost) {
       // Paths with dots should still use the history fallback.
       // See https://github.com/facebookincubator/create-react-app/issues/387.
       disableDotRule: true,
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
     },
     public: allowedHost,
     proxy,

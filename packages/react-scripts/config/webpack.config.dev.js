@@ -43,6 +43,7 @@ module.exports = {
   // This means they will be the "root" imports that are included in JS bundle.
   // The first two entry points enable "hot" CSS and auto-refreshes for JS.
   entry: [
+    'react-hot-loader/patch',
     // Include an alternative client for WebpackDevServer. A client's job is to
     // connect to WebpackDevServer by a socket and get notified about changes.
     // When you save a file, the client will either apply hot updates (in case
@@ -76,7 +77,7 @@ module.exports = {
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
-    publicPath: publicPath,
+    publicPath: 'http://localhost:3000/',
     // Point sourcemap entries to original disk location
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath),
@@ -195,6 +196,7 @@ module.exports = {
           plugins: [
             // require.resolve('babel-plugin-transform-class-properties'),
             // this enables decorators
+            require.resolve('react-hot-loader/babel'),
             require.resolve('babel-plugin-transform-decorators-legacy'),
           ],
           // @remove-on-eject-end
